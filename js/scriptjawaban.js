@@ -4,6 +4,7 @@ let userAnswers = {};
 let kelas = localStorage.getItem("kelas");
 let nama = localStorage.getItem("nama");
 let email = localStorage.getItem("email");
+let uniqueAnswers = new Set();
 const kelompokST01_08 = Array.from({ length: 8 }, (_, i) => `ST${String(i + 1).padStart(2, "0")}`);
 const kelompokST09_17 = Array.from({ length: 9 }, (_, i) => `ST${i + 9}`);
 const kelompokST18_ST25 = Array.from({ length: 8 }, (_, i) => `ST${i + 18}`);
@@ -16,12 +17,37 @@ let indexMatkul = 0;  // Variabel global
 function updateIndexMatkul(currentQuestion) {
     indexMatkul = Math.floor((currentQuestion - 1) / 5);
 }
+document.addEventListener("DOMContentLoaded", function() {
+    // Ambil semua pertanyaan
+    const questions = document.querySelectorAll(".question");
+
+    questions.forEach(question => {
+        const questionId = question.getAttribute("data-question");
+        const savedAnswer = localStorage.getItem(`answer-${questionId}`);
+
+        if (savedAnswer) {
+            // Cek opsi yang sesuai dengan jawaban yang tersimpan
+            const options = question.querySelectorAll(".option");
+            options.forEach(option => {
+                if (option.textContent.trim() === savedAnswer) {
+                    option.classList.add("selected");
+                    option.style.borderColor = "#ffff";
+                }
+            });
+        }
+    });
+});
+
+
 
 window.onload = function() {
     const existingCode = getCookie("survey_submitted");
+    
+
     if (localStorage.getItem("surveyCompleted") !== "true") {
         window.location.href = "../index.html";// Balikin ke halaman utama
     }
+    
     if(existingCode) {
         document.getElementById("message").innerHTML = `
             Anda sudah mengisi survei ini sebelumnya.<br>
@@ -30,6 +56,8 @@ window.onload = function() {
         document.getElementById("message").classList.remove("hidden");
         document.querySelector(".quiz-container").style.display = 'none';
     }
+    
+
 };
 
 function setCookie(name, value, days) {
@@ -151,6 +179,7 @@ if (typeof showQuestion === "function") {
 
 function selectOption(option) {
     const question = option.closest('.question');
+    const questionId = question.getAttribute("data-question");
 
     // Reset warna semua opsi ke default (tidak berwarna atau abu-abu)
     question.querySelectorAll('.option').forEach(opt => {
@@ -163,6 +192,11 @@ function selectOption(option) {
     option.style.borderColor = "#ffff"; // Warna biru untuk jawaban yang dipilih
     
     updateIndexMatkul(currentQuestion);
+    let selectedText = option.textContent.trim();
+
+    // Simpan ke localStorage dengan ID pertanyaan
+    localStorage.setItem(`answer-${questionId}`, selectedText);
+    console.log(`Jawaban disimpan untuk Q${questionId}: ${selectedText}`);
 
     console.log(indexMatkul);
     // Simpan jawaban user, hanya satu per pertanyaan
