@@ -1,0 +1,426 @@
+:root {
+    --text-color:#ff91c0;
+    --container-color:#bed1e8;
+    --button-color:#fff8b2;
+    --background-color:#ca9fb1;
+    --judul-color:#ffff;
+    --candy-pink:#ffb7cf;
+    --hitam-color:black;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--background-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.question {
+    display: none;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.5s ease;
+}
+.question.active {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+
+
+h2 {
+    color: var(--judul-color);
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+.matkul-1,.matkul-2,.matkul-3,.matkul-4,.matkul-5,.matkul-6,.matkul-7,.matkul-8{
+    color: var(--hitam-color);
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.options {
+    display: grid;
+    gap: 10px;
+}
+
+.option {
+    background: var(--button-color);
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    color: var(--text-color);
+}
+
+.option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.option.selected {
+    border-color: var(--button-color);
+    background: var(--candy-pink);
+    color: var(--judul-color);
+}
+
+.navigation {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.prev-btn {
+    background: var(--button-color);
+    color: var(--text-color);
+}
+
+.next-btn {
+    background: var(--button-color);
+    color: var(--text-color);
+}
+.next-btn:hover{
+    background-color: var(--candy-pink);
+    color: white;
+}
+.prev-btn:hover{
+    background-color: var(--candy-pink);
+    color: white;
+}
+
+.progress-bar {
+    height: 5px;
+    background: #eee;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.progress {
+    height: 100%;
+    background: var(--candy-pink);
+    width: 0;
+    transition: width 0.3s ease;
+    border-radius: 5px;
+}
+
+.result {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+.result.show {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+0% { transform: translateX(0); }
+25% { transform: translateX(-5px); }
+50% { transform: translateX(5px); }
+75% { transform: translateX(-5px); }
+100% { transform: translateX(0); }
+}
+
+.shake {
+animation: shake 0.3s ease-in-out;
+}
+
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--container-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 20px;
+    color: var(--text-color);
+}
+.mulaiKuis{
+    background: var(--button-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.mulaiKuis:hover{
+    background-color: var(--candy-pink);
+    color: white;
+}
+
+
+.start-screen input {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border-radius: 8px;
+    border: var(--button-color);
+}
+
+/* Styling untuk form */
+.start-screen {
+text-align: center;
+margin: 20px;
+}
+
+/* Styling untuk input fields */
+.input {
+width: 80%;
+padding: 10px;
+margin: 10px 0;
+border: 2px solid #ccc;
+background-color: var(--button-color);
+border-radius: 5px;
+font-size: 16px;
+transition: all 0.3s ease-in-out;
+color: var(--text-color);
+
+}
+
+/* Gaya border saat input divalidasi */
+.input:focus {
+border-color: var(--background-color); /* warna biru ketika fokus */
+outline: none;
+background-color: var(--button-color);
+}
+
+/* Gaya dropdown select */
+select.input {
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border: 2px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+background-color: var(--button-color);
+transition: all 0.3s ease-in-out;
+
+
+
+}
+select {
+    appearance: none; /* Hilangkan tampilan default */
+    -webkit-appearance: none; /* Untuk Safari */
+    -moz-appearance: none; /* Untuk Firefox */
+  }
+
+/* Gaya dropdown saat fokus */
+select.input:focus {
+border-color: var(--background-color);
+outline: none;
+background-color: var(--button-color);
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+#dropdown-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-color);
+    color: pink;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    text-align: left;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: var(--button-color);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 10px;
+}
+
+.dropdown-menu li {
+    padding: 10px;
+    cursor: pointer;
+    color: pink;
+}
+
+.dropdown-menu li:hover {
+    background-color: var(--candy-pink);
+    color: white;
+}
+
+.show {
+    display: block;
+}
+
+
+/* Animasi shake untuk form */
+
+/* Styling border merah jika input kosong */
+.input[style*="border-color: red;"] {
+border-color: red;
+}
+
+/* Untuk mobile */
+@media screen and (max-width: 768px) {
+.input {
+width: 100%;
+}
+select.input {
+width: 100%;
+}
+
+.start-screen {
+text-align: center;
+margin: 20px;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.next-btn{
+    background-color: var(--candy-pink);
+    color: white;
+}
+.mulaiKuis{
+    background-color: var(--candy-pink);
+    color: white;
+}
+.start{
+    background-color: var(--candy-pink) !important;
+    color: white !important;
+}
+}
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 1000px;
+    height: auto;
+    margin: 0 auto;
+    position: relative; /* Baru */
+  padding-bottom: 60px; /* Baru */
+  background-color: var(--container-color);
+  color: var(--text-color);
+}
+.start{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px;
+    cursor: pointer;
+    background-color: var(--button-color);
+    border-radius: 20px;    
+    color: var(--text-color);
+}
+.start:hover{
+    background-color: var(--candy-pink);
+    color: white;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+}
+.typing {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--judul-color);
+    overflow-wrap: break-word;  /* Memaksa teks pindah baris */
+    white-space: normal;        /* Supaya teks bisa turun ke bawah */
+    text-align: center;         /* Tengahin teks */
+    max-width: 100%;            /* Biar responsif */
+    min-height: 30px;           /* Biar nggak loncat-loncat */
+}
+.description {
+    margin-top: 10px;
+    font-size: 18px;
+    max-width: 600px;
+    text-align: justify;
+}
+img {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Styling untuk quiz container */
+.quiz-container{
+    background: var(--container-color);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 600px;
+    margin: 20px auto;
+    display: none; /* Awalnya sembunyi */
+}
+.hidden { display: none; }
+.shake { animation: shake 0.5s; }
+
+#message {
+text-align: center;
+padding: 20px;
+color: var(--text-color);
+font-size: 1.2em;
+background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    max-width: 600px;
+    width: 100%;
+    transform: translateY(0);
+    transition: all 0.3s ease;
+}
+#unique-code {
+    font-size: 1.5em;
+    color: var(--text-color);
+    font-weight: bold;
+    letter-spacing: 2px;
+    background: #f7fafc;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}

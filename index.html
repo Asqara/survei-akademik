@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    <title>Survei Akademik KM PKU</title>
+    <link rel="stylesheet" href="style/styles.css">
+    
+</head>
+<body>
+    <div id="message" class="hidden">
+        Anda sudah mengisi survei ini sebelumnya.
+    </div>
+    <div id="container" class="container">
+        <div class="content">
+            <div class="typing" id="typing"></div>
+            <div class="description"> <p>
+                <span>Halo, mahasiswa/i yang luar biasa!</span><br><br>
+
+                Kami mengundang Anda untuk berpartisipasi dalam survey akademik ini guna memahami pengalaman dan tantangan dalam dunia perkuliahan. Jawaban yang Anda berikan akan membantu kami dalam menyusun analisis yang lebih akurat dan bermanfaat bagi perkembangan akademik kita bersama.<br><br>
+                
+                🔹 Jawablah dengan jujur! Tidak ada jawaban benar atau salah. Opini dan pengalaman Anda sangat berarti.<br>
+                🔹 Privasi Anda dijamin aman. Semua data yang dikumpulkan akan dirahasiakan dan hanya digunakan untuk keperluan penelitian tanpa mengungkap identitas pribadi.<br><br>
+                
+                Terima kasih atas waktu dan kontribusi Anda! Mari bersama-sama menciptakan lingkungan akademik yang lebih baik. 🚀</p>
+            </div>
+        </div>
+        <img src="img/Home.png" alt="Profile Picture">
+        <div class="start" onclick="mulai()">Gas Isi Survey Berikut!</div>
+    </div>
+   
+    <div class="start-screen">
+        <h2>Isi Form Berikut Sesuai Identitas Anda</h2>
+        <input class="input" type="text" id="nama" placeholder="Nama Anda (Opsional)">
+        
+        <!-- Custom Dropdown -->
+        <div class="dropdown">
+            <button id="dropdown-btn" class="input">Pilih Kelas</button>
+            <ul id="dropdown-list" class="dropdown-menu">
+                <!-- Kelas ST -->
+                <li data-value="ST01">ST01</li>
+                <li data-value="ST02">ST02</li>
+                <li data-value="ST03">ST03</li>
+                <li data-value="ST04">ST04</li>
+                <li data-value="ST05">ST05</li>
+                <li data-value="ST06">ST06</li>
+                <li data-value="ST07">ST07</li>
+                <li data-value="ST08">ST08</li>
+                <li data-value="ST09">ST09</li>
+                <li data-value="ST10">ST10</li>
+                <li data-value="ST11">ST11</li>
+                <li data-value="ST12">ST12</li>
+                <li data-value="ST13">ST13</li>
+                <li data-value="ST14">ST14</li>
+                <li data-value="ST15">ST15</li>
+                <li data-value="ST16">ST16</li>
+                <li data-value="ST17">ST17</li>
+                <li data-value="ST18">ST18</li>
+                <li data-value="ST19">ST19</li>
+                <li data-value="ST20">ST20</li>
+                <li data-value="ST21">ST21</li>
+                <li data-value="ST22">ST22</li>
+                <li data-value="ST23">ST23</li>
+                <li data-value="ST24">ST24</li>
+                <li data-value="ST25">ST25</li>
+                <li data-value="ST26">ST26</li>
+                <li data-value="ST27">ST27</li>
+                <li data-value="ST28">ST28</li>
+                <li data-value="ST29">ST29</li>
+                <li data-value="ST30">ST30</li>
+                <li data-value="ST31">ST31</li>
+                <li data-value="ST32">ST32</li>
+                <li data-value="ST33">ST33</li>
+                <li data-value="ST34">ST34</li>
+                <li data-value="ST35">ST35</li>
+                <li data-value="ST36">ST36</li>
+    
+                <!-- Kelas SS -->
+                <li data-value="SS01">SS01</li>
+                <li data-value="SS02">SS02</li>
+                <li data-value="SS03">SS03</li>
+                <li data-value="SS04">SS04</li>
+                <li data-value="SS05">SS05</li>
+                <li data-value="SS06">SS06</li>
+                <li data-value="SS07">SS07</li>
+                <li data-value="SS08">SS08</li>
+                <li data-value="SS09">SS09</li>
+                <li data-value="SS10">SS10</li>
+                <li data-value="SS11">SS11</li>
+                <li data-value="SS12">SS12</li>
+    
+                <!-- Kelas INST -->
+                <li data-value="INST01">INST01</li>
+                <li data-value="INST02">INST02</li>
+                <li data-value="INST03">INST03</li>
+    
+                <!-- Kelas INSS -->
+                <li data-value="INSS01">INSS01</li>
+            </ul>
+        </div>
+    
+        <input class="input" type="email" id="email" placeholder="Username Instagram (Opsional)">
+        <button class="mulaiKuis" onclick="mulaiKuis()">Mulai Kuis</button>
+    </div>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>
