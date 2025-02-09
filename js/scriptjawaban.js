@@ -33,7 +33,7 @@ window.onload = function() {
     if (existingCode) {
         document.getElementById("message").innerHTML = `Anda sudah mengisi survei ini sebelumnya.<br>Kode Unik Anda: <strong>${existingCode}</strong>`;
         document.getElementById("message").classList.remove("hidden");
-        document.querySelector('.container').style.display = 'none';
+        document.querySelector('.container1').style.display = 'none';
     }
 };
 
@@ -73,7 +73,7 @@ function showSurvey() {
         return;
     }
     
-    document.querySelector('.container').style.display = 'none';
+    document.querySelector('.container1').style.display = 'none';
     document.querySelector('.quiz-container').style.display = 'block';
     
     questionsList = [];
