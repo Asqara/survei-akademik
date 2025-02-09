@@ -23,9 +23,35 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     });
+    if (localStorage.getItem("coursesSelected") === "true") {
+        const savedCourses = JSON.parse(localStorage.getItem('selectedCourses'));
+        if (savedCourses && savedCourses.length >= 3) {
+            questionsList = [];
+            savedCourses.forEach((course) => {
+                // Bangun ulang questionsList sama seperti di showSurvey()
+                const questions = [
+                    { text: `Apa nilai mutu yang kamu dapatkan di mata kuliah tersebut?`, options: ["A", "AB", "B", "BC", "C", "D", "E"], judul: course },
+        { text: `Seberapa sulit mata kuliah tersebut menurutmu?`, options: ["Sangat Sulit", "Sulit", "Mudah", "Sangat Mudah"], judul: course },
+        { text: `Seberapa sulit bagi kamu untuk memahami penjelasan yang diberikan oleh dosen mata kuliah tersebut?`, options: ["Sangat Sulit", "Sulit", "Mudah", "Sangat Mudah"], judul: course },
+        { text: `Seberapa sulit bagi kamu untuk mendapatkan jawaban yang memuaskan saat bertanya kepada dosen mata kuliah tersebut?`, options: ["Sangat Sulit", "Sulit", "Mudah", "Sangat Mudah"], judul: course },
+        { text: `Rata-rata jam belajar mandiri per minggu (di luar kuliah) untuk mata kuliah tersebut?`, options: ["< 1 jam", "1-2 jam", "2-4 jam", "4-6 jam", "> 6 jam"], judul: course }
+                ];
+                questionsList.push(...questions);
+            });
+            
+            totalQuestions = questionsList.length;
+            currentQuestionIndex = parseInt(localStorage.getItem('currentQuestionIndex')) || 0;
+            
+            document.querySelector('.container1').style.display = 'none';
+            document.querySelector('.quiz-container').style.display = 'block';
+            showQuestion(currentQuestionIndex);
+            updateProgress();
+        }
+    }
 });
 
 window.onload = function() {
+    
     if (localStorage.getItem("surveyCompleted") !== "true") {
         window.location.href = "../index.html";
     }
@@ -38,9 +64,23 @@ window.onload = function() {
 };
 
 document.addEventListener("DOMContentLoaded", function () {
-    new Sortable(document.getElementById("available-container"), { group: "courses", animation: 150 });
-    new Sortable(document.getElementById("selected-container"), { group: "courses", animation: 150 });
+    let availableContainer = document.getElementById("available-container");
+    let selectedContainer = document.getElementById("selected-container");
+
+    new Sortable(availableContainer, {
+        group: "courses",
+        animation: 200, // Tambahkan animasi saat drag
+        onEnd: function (evt) {
+            console.log("Dipindahkan:", evt.item.textContent);
+        },
+    });
+
+    new Sortable(selectedContainer, {
+        group: "courses",
+        animation: 200,
+    });
 });
+
 
 function updateProgress() {
     const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
@@ -67,15 +107,20 @@ for(let i=0; i < ca.length; i++) {
 return null;
 }
 function showSurvey() {
+
     const selectedCourses = [...document.querySelectorAll('#selected-container .course')].map(el => el.textContent.trim());
-    if (selectedCourses.length === 0) {
-        alert('Silahkan pilih minimal 1 mata kuliah terlebih dahulu!');
+    if (selectedCourses.length < 3) {
+        document.querySelector('.container1').classList.add('shake');
+        setTimeout(() => {
+            document.querySelector('.container1').classList.remove('shake');
+        }, 500);
         return;
-    }
+    } 
+    localStorage.setItem('selectedCourses', JSON.stringify(selectedCourses));
+    localStorage.setItem('coursesSelected', 'true');
     
     document.querySelector('.container1').style.display = 'none';
     document.querySelector('.quiz-container').style.display = 'block';
-    
     questionsList = [];
     selectedCourses.forEach((course) => {
     const questions = [
@@ -90,6 +135,7 @@ function showSurvey() {
 
     
     totalQuestions = questionsList.length;
+    currentQuestionIndex = parseInt(localStorage.getItem('currentQuestionIndex')) || 0;
     showQuestion(currentQuestionIndex);
     updateProgress();
 }

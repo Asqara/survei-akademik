@@ -196,7 +196,7 @@ margin: 20px;
 
 /* Styling untuk input fields */
 .input {
-width: 80%;
+width: 90%;
 padding: 10px;
 margin: 10px 0;
 border: 2px solid #ccc;
@@ -226,14 +226,7 @@ font-size: 16px;
 background-color: var(--button-color);
 transition: all 0.3s ease-in-out;
 
-
-
 }
-select {
-    appearance: none; /* Hilangkan tampilan default */
-    -webkit-appearance: none; /* Untuk Safari */
-    -moz-appearance: none; /* Untuk Firefox */
-  }
 
 /* Gaya dropdown saat fokus */
 select.input:focus {
@@ -478,7 +471,11 @@ background: white;
     background: var(--candy-pink);
     color: var(--judul-color);
 }
-
+span{
+    color: var(--hitam-color);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
 /* Animasikan tombol */
 .button-start {
     padding: 12px 20px;
