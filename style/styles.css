@@ -33,6 +33,7 @@ body {
     transform: translateX(-50px);
     transition: all 0.5s ease;
 }
+
 .question.active {
     display: block;
     opacity: 1;
@@ -44,12 +45,12 @@ body {
 h2 {
     color: var(--judul-color);
     margin-bottom: 20px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
-.matkul-1,.matkul-2,.matkul-3,.matkul-4,.matkul-5,.matkul-6,.matkul-7,.matkul-8{
+h4{
     color: var(--hitam-color);
     margin-bottom: 20px;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
 }
 
 .options {
@@ -392,13 +393,14 @@ img {
 
 /* Styling untuk quiz container */
 .quiz-container{
+    display: none; /* Awalnya sembunyi */
     background: var(--container-color);
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     max-width: 600px;
     margin: 20px auto;
-    display: none; /* Awalnya sembunyi */
+    
 }
 .hidden { display: none; }
 .shake { animation: shake 0.5s; }
@@ -427,4 +429,44 @@ background: white;
     border-radius: 5px;
     display: inline-block;
     margin-top: 10px;
+}
+.course-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    max-width: 900px;
+    height: auto;
+}
+.course{
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    color: var(--text-color);
+    border: 2px solid #ccc;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+.button-start{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 12px;
+    cursor: pointer;
+    background-color: var(--button-color);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;    
+    color: var(--text-color);
+}
+.button-start:hover{
+    background-color: var(--candy-pink);
+    color: white;
 }
