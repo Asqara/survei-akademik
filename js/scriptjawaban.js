@@ -60,6 +60,7 @@ window.onload = function() {
         document.getElementById("message").innerHTML = `Anda sudah mengisi survei ini sebelumnya.<br>Kode Unik Anda: <strong>${existingCode}</strong>`;
         document.getElementById("message").classList.remove("hidden");
         document.querySelector('.container1').style.display = 'none';
+        document.querySelector('.quiz-container').style.display = 'none';
     }
 };
 
@@ -240,8 +241,9 @@ function toggleButtons() {
 
 function showResult() {
     document.querySelector('.quiz-container').style.display = 'none';
-    document.getElementById("message").innerHTML = `Terima Kasih Anda Telah Mengisi Survey Ini`;
-        document.getElementById("message").classList.remove("hidden");
+    const kuisioner = nama || 'Anda';
+    document.getElementById("message").innerHTML = `Terima Kasih ${kuisioner} Telah Mengisi Survey Ini`;
+    document.getElementById("message").classList.remove("hidden");
     
 }
 
