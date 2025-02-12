@@ -478,7 +478,7 @@ background: white;
     border-radius: 10px;
     transition: all 0.3s ease;
     cursor: grab;
-    max-height: 50px;
+    max-height: 70px;
 }
 
 .course:hover {
