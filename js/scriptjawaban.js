@@ -1,6 +1,5 @@
-
 let currentQuestion = 1;
-const userAnswers = [];
+let userAnswers = JSON.parse(localStorage.getItem('userAnswers')) || [];
 let matkulValues = [];
 let totalQuestions = 0;
 let currentQuestionIndex = 0;
@@ -14,12 +13,16 @@ document.addEventListener("DOMContentLoaded", function() {
     document.querySelectorAll(".question").forEach(question => {
         const questionId = question.getAttribute("data-question");
         const savedAnswer = localStorage.getItem(`answer-${questionId}`);
+        const savedAnswers = JSON.parse(localStorage.getItem('userAnswers')) || [];
+userAnswers = savedAnswers;
         if (savedAnswer) {
             question.querySelectorAll(".option").forEach(option => {
                 if (option.textContent.trim() === savedAnswer) {
                     option.classList.add("selected");
                     option.style.borderColor = "#ffff";
                 }
+                
+                
             });
         }
     });
@@ -208,8 +211,8 @@ function selectOption(option) {
     question.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
     option.classList.add('selected');
     localStorage.setItem(`answer-${questionId}`, option.textContent.trim());
+    localStorage.setItem('userAnswers', JSON.stringify(userAnswers));
     userAnswers[questionId] = `${option.textContent.trim()}, ${questionata.judul}`;
-    console.log(userAnswers[questionId]);
 }
 function nextQuestion() {
     if (!document.querySelector(`[data-question="${currentQuestionIndex}"] .option.selected`)) {
@@ -257,6 +260,7 @@ function submitData() {
     document.getElementById('unique-code').textContent = uniqueCode;
     
     getIpAddress().then(ipAddress => {
+        
         submitFormData(nama, kelas, email, userAnswers, ipAddress, uniqueCode);
     });
 

@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --text-color:#ff91c0;
+    --text-color:black;
     --container-color:#bed1e8;
     --button-color:#fff8b2;
     --background-color:#ca9fb1;
@@ -244,7 +244,7 @@ background-color: var(--button-color);
     width: 100%;
     padding: 10px;
     background-color: var(--button-color);
-    color: pink;
+    color: var(--text-color);
     border: 2px solid #ccc;
     cursor: pointer;
     text-align: left;
@@ -269,7 +269,7 @@ background-color: var(--button-color);
 .dropdown-menu li {
     padding: 10px;
     cursor: pointer;
-    color: pink;
+    color: black;
 }
 
 .dropdown-menu li:hover {
