@@ -114,6 +114,7 @@ function showSurvey() {
 
     const selectedCourses = [...document.querySelectorAll('#selected-container .course')].map(el => el.textContent.trim());
     if (selectedCourses.length < 3) {
+        alert("Pilih minimal 3 mata kuliah yang menurut kamu susah")
         document.querySelector('.container1').classList.add('shake');
         setTimeout(() => {
             document.querySelector('.container1').classList.remove('shake');

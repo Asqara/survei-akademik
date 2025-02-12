@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 :root {
     --text-color:black;
     --container-color:#bed1e8;
@@ -446,6 +444,17 @@ background: white;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+.course-container:hover {
+    transform: scale(1.02);
+    opacity: 0.95;
+}
+
+#selected-container {
+    height: auto; /* Hapus duplikasi */
+    min-height: 200px; /* Gunakan min-height jika ingin ada batas minimum */
 }
 
 /* Hover efek */
