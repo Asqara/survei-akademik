@@ -101,7 +101,7 @@ function mulaiKuis() {
     startScreen.style.display = 'none';
 
     const kelompokST01_08 = Array.from({ length: 8 }, (_, i) => `ST${String(i + 1).padStart(2, "0")}`);
-    const kelompokST09_17 = Array.from({ length: 9 }, (_, i) => `ST${i + 9}`);
+    const kelompokST09_17 = Array.from({ length: 9 }, (_, i) => `ST${i + 10}`);
     const kelompokST18_ST25 = Array.from({ length: 8 }, (_, i) => `ST${i + 18}`);
     const kelompokST26_ST38 = Array.from({ length: 13 }, (_, i) => `ST${i + 26}`);
     const kelompokSS01_SS06 = Array.from({ length: 6 }, (_, i) => `SS${String(i + 1).padStart(2, "0")}`);
