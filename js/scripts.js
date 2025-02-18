@@ -125,7 +125,7 @@ function mulaiKuis() {
         localStorage.setItem("email", email);
         localStorage.setItem("surveyCompleted", "true");
     }
-    else if (kelompokST18_ST25.includes(kelas)) {
+    else if (kelompokST18_ST25.includes(kelas)||kelas === "ST18") {
         window.location.href = 'pertanyaan/cluster3.html'
         localStorage.setItem("kelas", kelas);
         localStorage.setItem("nama", nama);
